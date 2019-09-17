@@ -36,6 +36,19 @@ int main()
 // receives a string buffer read from keyboard.
 // dynamically allocates memory to make a deep copy of the given buf string.
 // return pointer to deep copy of given input string.
+
+//Deep VS Shallow Copy
+
+//Char * str1= hello
+//char * str2= bye
+//Shallow Copy str1 = str2 which means str1 get pointed to str2
+//results in memory leak
+
+//Deep Copy
+//str2 give me some chunk of memory that can fit str1 (copied 1 by 1) until it hits "/0" and then terminates after copying "/0"
+//call strLen(str1)
+//malloc(strLen(str1)+1 characters)
+//str copy
 char* copyString(char* buf)
 {
   char *cp = NULL;
