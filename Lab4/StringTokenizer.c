@@ -9,41 +9,24 @@
 #include <malloc.h>
 #include <string.h>
 
-int main(void)
+int main ()
 {
-    char buffer[15]; // static allocated array of characters.  It is called static allocation since at compile-time, we know the size to allocate.
-    // We must include one extra character for the end of string terminator '\0'
-    
-    // Copy message into buffer.
-    strcpy(buffer, "Hello World!!!");  //<---------
-    
-    printf("%s\n", buffer);
-    
-    return 0;
-}
-
-If we wanted to deal with copying strings of unknown length we could still use static allocation, but would need to allocate a sufficiently large buffer.
-
-Dynamic allocation will allocate the memory at program run-time so we get exactly the right number of characters depending on what text the user enters.
-
-#include <stdio.h>
-#include <malloc.h>
-#include <string.h>
-
-int main(void)
-{
-    char* message = strdup("Hello World!!!");
-    
-    // malloc returns a void *, which is a pointer to any thing.  Since we will use the memory as a string, we
-    // must typecast to the char * type.
-    
-    // The notation (char *) means to typecast the void * to a char *
-    char* buffer = (char *) malloc(sizeof(char) * strlen(message));
-    
-    // Copy message into buffer.
-    strcpy(buffer, "Hello World!!!");
-    
-    printf("%s\n", buffer);
-    
+    char str[] ="Apple Bannana Fruit Stuff";
+    char * pch;
+    printf ("Splitting string \"%s\" into tokens:\n",str);
+    pch = strtok (str," "); // used space to generate new tokens
+    while (pch != NULL)
+    {
+        printf ("%s\n",pch); //allocates mem and returns a pointer to the memory
+        pch = strtok (NULL, " "); //NULL because you dont need to pass the WHOLE string in again: continue eating tokens from the same input as before
+        
+        //allocate array (dynamic or static) char* argList[MAX_ARGS]; use #define to set this constant
+        //null just has to be the last element in the new array that is storing the char*Address out put by strTok array
+        //pass it in to execvp(array[i], array)
+        
+        //post condition: argsList[0] points to a.... argsList[1] points to b...argsList[max] points to null....
+        // did they type in exit? yes, do not run execvp
+        //is there an &? if so look back
+    }
     return 0;
 }
