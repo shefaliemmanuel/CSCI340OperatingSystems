@@ -22,10 +22,10 @@ int main()
 //    -115
     
     // apple vs zebra
-//    -25
+//    97 - 122 = -25
     
     // zebra vs apple
-//    25
+//    122 - 97 = 25
     
     // apple vs APPLE
 //    32
@@ -38,6 +38,7 @@ int main()
     char* S2 = strdup("apple");
     
 // it is an addition of  of ascii characters
+//    for this reason it IS case sensative
 //compares one charater at a time
 // Positive Result: If left char is lexicographically after the right char
 // Negative Result: If left char is lexicographically before the right char
