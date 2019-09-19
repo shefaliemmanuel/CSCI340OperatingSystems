@@ -16,7 +16,7 @@ int main()
   // static allocation of an array of char values.
   char  argBuf[ARGLEN];
   
-  printf("Enter an argument for a command: ");
+  printf("Enter an argument for a command: "); //replace prompt with $
   while(fgets(argBuf, ARGLEN, stdin) && *argBuf != '\n')
   {
     printf("You entered argument: %s\n", argBuf);
