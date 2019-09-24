@@ -6,11 +6,11 @@
 //  Copyright © 2019 Shefali Emmanuel. All rights reserved.
 //
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/wait.h>
-#include <string.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<sys/wait.h>
+#include<string.h>
 
 #define argumentLength 300
 
