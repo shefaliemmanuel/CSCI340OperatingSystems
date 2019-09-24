@@ -25,6 +25,11 @@ int main (){
 
     printf ("Hi! Please enter a command >");
     while (fgets(argumentBuffer, argumentLength, stdin) && *argumentBuffer != '\n'){
+
+        if(strcmp(argumentBuffer,"exit\n")==0){
+            exit(0);
+        }//end if(strcmp)        
+
         int spaceUsed = 0;
         char *pch;
         pch = strtok (argumentBuffer, " ");	// used space to generate new tokens
@@ -38,17 +43,17 @@ int main (){
             pch = strtok (NULL, " ");
             spaceUsed++;
             if(argumentBuffer[strlen(argumentBuffer)-1] == '\n'){
-                argumentBuffer[strlen(argumentBuffer)-1] == '\0';
+                argumentBuffer[strlen(argumentBuffer)-1] = '\0';
             }
         }//end while pch
 
         newArr[spaceUsed] = NULL;
         
-       /* if (strcmp (newArr[spaceUsed - 1], "&") == 0){
+        if (strcmp (newArr[spaceUsed - 1], "&") == 0){
             newArr[spaceUsed - 1] = NULL;
             backgroundJobStatus = true;
         } // end of while(fgets (argumentBuffer, argumentLength, stdin) && strcmp (argumentBuffer, "exit\n") != 0
-*/
+
 	spaceUsed = 0;
 	//memset(argumentBuffer, 0, argumentLength); //empty argumentBuffer
 	    
