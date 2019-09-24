@@ -25,7 +25,9 @@ int main (){
 
     printf ("Hi! Please enter a command >");
     while (fgets(argumentBuffer, argumentLength, stdin) && *argumentBuffer != '\n'){
-
+        if(argumentBuffer[strlen(argumentBuffer)-1] == '\n'){
+            argumentBuffer[strlen(argumentBuffer)-1] = '\0';
+        }
         char *pch;
 
         pch = strtok (argumentBuffer, " ");	// used space to generate new tokens
