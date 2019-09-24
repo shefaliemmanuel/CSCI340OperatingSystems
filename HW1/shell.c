@@ -39,10 +39,10 @@ int main (){
             //printf ("%s\n", pch);	//allocates mem and returns a pointer to the memory
             pch = strtok (NULL, " ");
         }//end while pch
-        newArr[spaceUsed+1] = NULL;
+        newArr[spaceUsed] = NULL;
         
-        if (strcmp (newArr[spaceUsed - 2], "&") == 0){
-            newArr[spaceUsed - 2] = NULL;
+        if (strcmp (newArr[spaceUsed - 1], "&") == 0){
+            newArr[spaceUsed - 1] = NULL;
             backgroundJobStatus = true;
         } // end of while(fgets (argumentBuffer, argumentLength, stdin) && strcmp (argumentBuffer, "exit\n") != 0)
 	    
