@@ -38,7 +38,11 @@ int main (){
         if (strcmp (argumentBuffer[spaceUsed - 2], "&") == 0){
             argumentBuffer[spaceUsed - 2] = NULL;
             backgroundJobStatus = true;
-        }
+        } // end of while(fgets (argumentBuffer, argumentLength, stdin) && strcmp (argumentBuffer, "exit\n") != 0)
+	    
+	spaceUsed = 0;
+	memset(argumentBuffer, 0, argumentLength);
+	    
         int rc = fork ();
         // fork failed; exit
         if (rc < 0){
