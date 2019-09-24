@@ -13,21 +13,37 @@
 #define argumentLength 300
 
 int main() {
-    // insert code here...
-    $printf("Hello, World!\n");
+    $printf("hello world (pid:%d)\n", (int) getpid());
+    int rc = fork();
     
-    system("date; cal; pwd; ls -l; cat test.txt; wc test.txt; wc -l test.txt; cal > calOut.txt; cat calOut.txt; sleep 5; sleep & 5; sleep 5 &; ps; exit");
-    
-    // static allocation of an array of char values.
-    char  argumentBuffer[argumentLength];
-    
-    while(fgets(argumentBuffer, argumentLength, stdin) && *argumentBuffer != '\n')
-    {
-        $printf("Enter an argument for a command: ");
-        
-        char* argCopy = copyString(argumentBuffer);
-        $printf("Argument copy: %s\n", argCopy);
-        
+    // fork failed; exit
+    if (rc < 0) {
+        $printf(stderr, "fork failed\n");
+        exit(1);
+    }
+    // child (new process)
+    else if (rc == 0) {
+        $printf("hello, I am child (pid:%d)\n", (int) getpid());
+        // static allocation of an array of char values.
+        char  argumentBuffer[argumentLength];
+        while(fgets(argumentBuffer, argumentLength, stdin) && *argumentBuffer != '\n')
+        {
+            $printf("Enter command: ");
+            $scanf("%[^\n]", argumentBuffer);
+            execvp(argumentBuffer[0], argumentBuffer);
+            
+            char* argCopy = copyString(argumentBuffer);
+            $printf("Argument copy: %s\n", argCopy);
+            
+            if (argumentBuffer[0] == "exit"){
+                exit 0;
+            }
+        }
+        // parent goes down this path (original process)
+        else {
+            $printf("hello, I am parent of %d (pid:%d)\n",
+                    rc, (int) getpid());
+        }
     }
     
     //STRING COMPARISON
@@ -41,10 +57,9 @@ int main() {
     
     
     //TOKENIZER
-    char str[] ="Apple Bannana Fruit Stuff";
     char * pch;
-    printf ("Splitting string \"%s\" into tokens:\n",str);
-    pch = strtok (str," "); // used space to generate new tokens
+    printf ("Splitting string \"%s\" into tokens:\n",argumentBuffer);
+    pch = strtok (argumentBuffer," "); // used space to generate new tokens
     while (pch != NULL)
     {
         printf ("%s\n",pch); //allocates mem and returns a pointer to the memory
