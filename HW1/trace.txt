@@ -1,1 +1,112 @@
+shefaliemmanuel@shefaliemmanuel-VirtualBox:~/Desktop/CSCI340OperatingSystems/HW1$ ./shellNew2 
+Hi! Please enter a command >date
+date
+
+hello, I am child (pid:2569)
+Wed Sep 25 12:29:19 EDT 2019
+hello, I am parent of 2569 (pid:2568)
+Restarting...
+Hi! Please enter a command >cal
+cal
+
+hello, I am child (pid:2570)
+   September 2019     
+Su Mo Tu We Th Fr Sa  
+ 1  2  3  4  5  6  7  
+ 8  9 10 11 12 13 14  
+15 16 17 18 19 20 21  
+22 23 24 25 26 27 28  
+29 30                 
+                      
+hello, I am parent of 2570 (pid:2568)
+Restarting...
+Hi! Please enter a command >pwd
+pwd
+
+hello, I am child (pid:2571)
+/home/shefaliemmanuel/Desktop/CSCI340OperatingSystems/HW1
+hello, I am parent of 2571 (pid:2568)
+Restarting...
+Hi! Please enter a command >ls -l
+ls
+-l
+
+hello, I am child (pid:2574)
+total 196
+-rwxr-xr-x 1 shefaliemmanuel shefaliemmanuel   9372 Sep 24 22:28 a.out
+drwxr-xr-x 3 shefaliemmanuel shefaliemmanuel   4096 Sep 24 22:28 a.out.dSYM
+-rw-r--r-- 1 shefaliemmanuel shefaliemmanuel      0 Sep 24 22:37 calOut.txt
+-rw-r--r-- 1 shefaliemmanuel shefaliemmanuel 131841 Sep 24 22:28 HW1Instructions.pdf
+-rwxr-xr-x 1 shefaliemmanuel shefaliemmanuel   9108 Sep 24 22:28 shell
+-rw-r--r-- 1 shefaliemmanuel shefaliemmanuel   2079 Sep 24 22:28 shell.c
+-rwxr-xr-x 1 shefaliemmanuel shefaliemmanuel  13104 Sep 25 12:28 shellNew2
+-rw-r--r-- 1 shefaliemmanuel shefaliemmanuel   3146 Sep 25 12:20 shellNew2.c
+-rw-r--r-- 1 shefaliemmanuel shefaliemmanuel   2209 Sep 24 22:28 shellNew.c
+-rw-r--r-- 1 shefaliemmanuel shefaliemmanuel     24 Sep 24 22:28 test.txt
+-rw-r--r-- 1 shefaliemmanuel shefaliemmanuel      1 Sep 24 22:28 trace.txt
+hello, I am parent of 2574 (pid:2568)
+Restarting...
+Hi! Please enter a command >cat test.txt
+cat
+test.txt
+
+hello, I am child (pid:2575)
+"test"
+"this is a test"
+hello, I am parent of 2575 (pid:2568)
+Restarting...
+Hi! Please enter a command >wc test.txt
+wc
+test.txt
+
+hello, I am child (pid:2576)
+ 2  5 24 test.txt
+hello, I am parent of 2576 (pid:2568)
+Restarting...
+Hi! Please enter a command >wc -l test.txt
+wc
+-l
+test.txt
+
+hello, I am child (pid:2578)
+2 test.txt
+hello, I am parent of 2578 (pid:2568)
+Restarting...
+Hi! Please enter a command >sleep 5
+sleep
+5
+
+hello, I am child (pid:2579)
+ps
+hello, I am parent of 2579 (pid:2568)
+Restarting...
+Hi! Please enter a command >ps
+
+hello, I am child (pid:2580)
+  PID TTY          TIME CMD
+ 2429 pts/0    00:00:00 bash
+ 2568 pts/0    00:00:00 shellNew2
+ 2580 pts/0    00:00:00 ps
+hello, I am parent of 2580 (pid:2568)
+Restarting...
+Hi! Please enter a command >sleep 5 &
+sleep
+5
+&
+
+hello, I am parent of 2581 (pid:2568)
+Restarting...
+Hi! Please enter a command >hello, I am child (pid:2581)
+ps
+ps
+
+hello, I am parent of 2582 (pid:2568)
+Restarting...
+Hi! Please enter a command >hello, I am child (pid:2582)
+  PID TTY          TIME CMD
+ 2429 pts/0    00:00:00 bash
+ 2568 pts/0    00:00:00 shellNew2
+ 2581 pts/0    00:00:00 sleep
+ 2582 pts/0    00:00:00 ps
+exit
 
