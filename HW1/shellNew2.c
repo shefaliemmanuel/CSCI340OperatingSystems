@@ -78,6 +78,7 @@ int main (){
           printf ("hello, I am parent of %d (pid:%d)\n", rc, (int) getpid ());
       }
     printf ("Goodbye.\n");
+    printf ("Hi! Please enter a command >");
     }
   return 0;
 }
