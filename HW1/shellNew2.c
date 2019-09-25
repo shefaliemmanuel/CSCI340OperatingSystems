@@ -42,20 +42,20 @@ int main (){
             //get rid of /n after tokenzier 
 
             char *strip_copy(const char *s) {
-                char *p = malloc(strlen(s) + 1);
-                if(p) {
-                    char *p2 = p;
-                    while(*s != '\0') {
-                        if(*s != '\t' && *s != '\n') {
-                            *p2++ = *s++;
-                        } else {
-                            ++s;
-                        }
-            
-                    *p2 = '\0';
-                    }
-                return p;
-               }
+    char *p = malloc(strlen(s) + 1);
+    if(p) {
+        char *p2 = p;
+        while(*s != '\0') {
+            if(*s != '\t' && *s != '\n') {
+                *p2++ = *s++;
+            } else {
+                ++s;
+            }
+        }
+        *p2 = '\0';
+    }
+    return p;
+}
 
 
             //char results= strip(*pch);
