@@ -56,8 +56,6 @@ int main (){
     }
     return p;
 }
-
-
             //char results= strip(*pch);
             newArr[spaceUsed] = strip_copy(pch);
             printf ("%s\n", pch);
@@ -98,7 +96,7 @@ int main (){
           }
           printf ("hello, I am parent of %d (pid:%d)\n", rc, (int) getpid ());
       }
-    printf ("Restart\n");
+    printf ("Restarting...\n");
     printf ("Hi! Please enter a command >");
     }
   return 0;
