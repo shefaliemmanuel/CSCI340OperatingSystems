@@ -16,6 +16,7 @@
 #define argumentLength 100
 #define newArgLen 10
 
+//referenced: https://stackoverflow.com/questions/1515195/how-to-remove-n-or-t-from-a-given-string-in-c
 
 int main (){
     
@@ -38,14 +39,34 @@ int main (){
         
         //tokenizes the user input
         while (pch != NULL){
-            newArr[spaceUsed] = pch;
-            printf ("%s\n", pch);	//allocates mem and returns a pointer to the memory
+            //get rid of /n after tokenzier 
+
+            char *strip_copy(const char *s) {
+                char *p = malloc(strlen(s) + 1);
+                if(p) {
+                    char *p2 = p;
+                    while(*s != '\0') {
+                        if(*s != '\t' && *s != '\n') {
+                            *p2++ = *s++;
+                        } else {
+                            ++s;
+                        }
+            
+                    *p2 = '\0';
+                    }
+                return p;
+               }
+
+
+            //char results= strip(*pch);
+            newArr[spaceUsed] = strip_copy(pch);
+            printf ("%s\n", pch);
             pch = strtok (NULL, " ");
             spaceUsed++;
             if(argumentBuffer[strlen(argumentBuffer)-1] == '\n'){
                 argumentBuffer[strlen(argumentBuffer)-1] = '\0';
             }
-        }//end while pch
+        }//end while (pch != NULL)
 
         newArr[spaceUsed] = NULL;
         
@@ -77,7 +98,7 @@ int main (){
           }
           printf ("hello, I am parent of %d (pid:%d)\n", rc, (int) getpid ());
       }
-    printf ("Goodbye.\n");
+    printf ("Restart\n");
     printf ("Hi! Please enter a command >");
     }
   return 0;
