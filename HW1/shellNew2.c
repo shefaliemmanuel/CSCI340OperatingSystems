@@ -41,21 +41,23 @@ int main (){
         while (pch != NULL){
             //get rid of /n after tokenzier 
 
+            //This code until the next comment was found on github
             char *strip_copy(const char *s) {
-    char *p = malloc(strlen(s) + 1);
-    if(p) {
-        char *p2 = p;
-        while(*s != '\0') {
-            if(*s != '\t' && *s != '\n') {
-                *p2++ = *s++;
-            } else {
-                ++s;
-            }
-        }
-        *p2 = '\0';
-    }
-    return p;
-}
+                char *p = malloc(strlen(s) + 1);
+                if(p) {
+                    char *p2 = p;
+                    while(*s != '\0') {
+                        if(*s != '\t' && *s != '\n') {
+                            *p2++ = *s++;
+                        } else {
+                            ++s;
+                        }
+                    }
+                    *p2 = '\0';
+                    }             
+                    return p;
+                }// end of code found on github
+
             //char results= strip(*pch);
             newArr[spaceUsed] = strip_copy(pch);
             printf ("%s\n", pch);
@@ -63,7 +65,7 @@ int main (){
             spaceUsed++;
             if(argumentBuffer[strlen(argumentBuffer)-1] == '\n'){
                 argumentBuffer[strlen(argumentBuffer)-1] = '\0';
-            }
+            }//end of if argumentBuffer
         }//end while (pch != NULL)
 
         newArr[spaceUsed] = NULL;
