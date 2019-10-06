@@ -1,4 +1,5 @@
 # include "pcb.h"
+# include "readyQ.h"
 # include <stddef.h>
 
 init_process(PCB *p1, 100, 10, 10);

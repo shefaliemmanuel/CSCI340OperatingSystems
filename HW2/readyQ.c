@@ -19,7 +19,7 @@ int sizeOfQ(ReadyQ *Q){
 }
 bool insert(ReadyQ *Q){
     //use numProcesses as index for where to insert
-
+    ;
 }
 
 PCB*remove(ReadyQ *Q){
@@ -31,5 +31,5 @@ PCB*remove(ReadyQ *Q){
 }
 
 void bubbleSort(ReadyQ *Q){
-    
+    ;
 }

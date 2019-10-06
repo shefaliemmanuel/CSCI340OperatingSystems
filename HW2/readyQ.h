@@ -6,8 +6,13 @@ typedef struct{
 }ReadyQ;
 
 void empty(ReadyQ *Q);
+
 bool isEmpty(ReadyQ *Q);
+
 int sizeOfQ(ReadyQ *Q);
+
 bool insert(ReadyQ *Q);
+
 PCB*remove(ReadyQ *Q);
+
 void bubbleSort(ReadyQ *Q);
