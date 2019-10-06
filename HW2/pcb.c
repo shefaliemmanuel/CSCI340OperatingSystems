@@ -1,9 +1,10 @@
 # include "pcb.h"
+# include <stddef.h>
 
 // simulate CPU run of a process
-//&process_address of PCB
-//&process_time run in secs
-//dedeucted runTime from PCB remainingTime
+// &process_address of PCB
+// &process_time run in secs
+// dedeucted runTime from PCB remainingTime
 
 void init_process(PCB * process, int pid, int totalTime, int remainingTime){
     process->pid=pid;
@@ -12,7 +13,8 @@ void init_process(PCB * process, int pid, int totalTime, int remainingTime){
 }
 
 void runProcess(PCB *process, int time){
-    if(process == NULL){
+    if(process != NULL){
+        if(time < (*process).remainingTime)
         (*process).remainingTime -= time;
     }
 }
