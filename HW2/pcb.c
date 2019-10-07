@@ -6,10 +6,10 @@
 // &process_time run in secs
 // dedeucted runTime from PCB remainingTime
 
-void init_process(PCB * process, int pid, int totalTime, int remainingTime){
-    process->pid=pid;
-    process->remainingTime=remainingTime;
-    process->totalTime=totalTime;
+void init_process(PCB *process, int pid, int totalTime, int remainingTime){
+    process->pid = pid;
+    process->remainingTime = remainingTime;
+    process->totalTime = totalTime;
 }
 
 void runProcess(PCB *process, int time){
@@ -20,9 +20,9 @@ void runProcess(PCB *process, int time){
 }
 
 void printProcesses(PCB p){
-    printf(p.pid);
-    printf(p.remainingTime);
-    printf(p.totalTime);
+    printf("%d\n", p.pid);
+    printf("%d\n", p.remainingTime);
+    printf("%d\n", p.totalTime);
 }
 
 
