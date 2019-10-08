@@ -43,3 +43,13 @@ void bubbleSort(ReadyQ *Q);
 void print(ReadyQ* Q);
 // Q - pointer to a ReadyQueue
 // post-condition: prints out information for each PCB in the queue.
+
+void runFCFS(ReadyQ *Q);
+// post-condition: if Q is not empty, then call runProcesses FUNCTION on first PCB in Queue
+//run first process in Q to completion 
+//PCBs one array slot forward so second is now first
+
+void removeFrontPCB(ReadyQ *Q);
+//assume first PCB has completed and queue has moreee than 1
+//shoft all other PCB one slot to the left 
+//decrement numProcess by 1
