@@ -40,6 +40,6 @@ void bubbleSort(ReadyQ *Q);
 // increasing order of remainingTime.  PCB with lowest
 // remainingTime will occupy list slot index 0.
 
-void print(ReadyQueue* Q);
+void print(ReadyQ* Q);
 // Q - pointer to a ReadyQueue
 // post-condition: prints out information for each PCB in the queue.

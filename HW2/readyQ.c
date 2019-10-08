@@ -50,3 +50,11 @@ PCB*remove(ReadyQ *Q){
 void bubbleSort(ReadyQ *Q){
     ;
 }
+
+void print(ReadyQ* Q){
+    for(int i = 0; i < sizeof(Q->pcbList);i++){
+        printf("%d/n",Q->pcbList[i]->pid);
+        printf("%d/n",Q->pcbList[i]->totalTime);
+        printf("%d/n",Q->pcbList[i]->remainingTime);
+    }
+}

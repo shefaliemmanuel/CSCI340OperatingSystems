@@ -19,10 +19,10 @@ void runProcess(PCB *process, int time){
     }
 }
 
-void printProcesses(PCB p){
-    printf("%d\n", p.pid);
-    printf("%d\n", p.remainingTime);
-    printf("%d\n", p.totalTime);
+void printProcesses(PCB *p){
+    printf("%d\n", p->pid);
+    printf("%d\n", p->remainingTime);
+    printf("%d\n", p->totalTime);
 }
 
 
