@@ -57,7 +57,16 @@ void bubbleSort(ReadyQ *Q){
 
 
 void runFCFS(ReadyQ *Q){
-    ;
+    if(!isEmpty(Q)){
+        PCB* process = &(Q->pcbList[0]);
+
+        //run until compeletion
+        runProcess(process,process->remainingTime);
+
+        //completed this Process, so print a message
+
+        //remove completed process from Q
+    }
 }
 
 void removeFrontPCB(ReadyQ *Q){
@@ -66,7 +75,9 @@ void removeFrontPCB(ReadyQ *Q){
             Q->pcbList[i] = Q->pcbList[i+1];
         }
     }
-    Q->numProcesses = Q->numProcesses - 1;
+    if(!isEmpty(Q)){
+        Q->numProcesses = Q->numProcesses - 1;
+    }
 }
 
 void print(ReadyQ* Q){
