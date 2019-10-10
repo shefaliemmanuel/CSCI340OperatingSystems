@@ -1,12 +1,14 @@
 # include "pcb.h"
-# include <stdbool.h>
+# include <stddef.h>
 # include <stdio.h>
+#include <stdbool.h>
 
 # define MAX_Q_LEN 100
 
 typedef struct{
     PCB pcbList[MAX_Q_LEN];
     int numProcesses;
+    int time;
 }ReadyQ;
 
 void empty(ReadyQ *Q);
@@ -17,39 +19,20 @@ bool isEmpty(ReadyQ *Q);
 // Q - pointer to a ReadyQueue
 // returns true if queue is empty - contains no processes; else, false.
 
-bool isFull(ReadyQ *Q);
 // Q - pointer to a ReadyQueue
 // returns true if queue is full - contains MAX_Q_LEN processes; else, false.
+bool isFull(ReadyQ* Q);
 
 int sizeOfQ(ReadyQ *Q);
-// Q - pointer to a ReadyQueue
-// returns number of processes stored in the queue.
 
-bool insert(ReadyQ *Q, PCB *process);
-// Q - pointer to a ReadyQueue
-// process - pointer to a PCB
-// post-condition: if Q is not full, then insert process
-// into next open processList array slot, increment
-// numProcesses, and return true; else, return false.
+bool insertQ(ReadyQ *Q);
 
 PCB*remove(ReadyQ *Q);
 
 void bubbleSort(ReadyQ *Q);
-// Q - pointer to a ReadyQueue
-// post-condition: Sorts contents of queue into
-// increasing order of remainingTime.  PCB with lowest
-// remainingTime will occupy list slot index 0.
-
-void print(ReadyQ* Q);
-// Q - pointer to a ReadyQueue
-// post-condition: prints out information for each PCB in the queue.
 
 void runFCFS(ReadyQ *Q);
-// post-condition: if Q is not empty, then call runProcesses FUNCTION on first PCB in Queue
-//run first process in Q to completion 
-//PCBs one array slot forward so second is now first
 
 void removeFrontPCB(ReadyQ *Q);
-//assume first PCB has completed and queue has moreee than 1
-//shoft all other PCB one slot to the left 
-//decrement numProcess by 1
+
+void printQ(ReadyQ* Q);

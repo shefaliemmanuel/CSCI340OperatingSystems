@@ -33,7 +33,7 @@ int sizeOfQ(ReadyQ *Q){
     //return sizeof(Q->pcbList);
 }
 
-bool insert(ReadyQ *Q, PCB *process){
+bool insertQ(ReadyQ *Q, PCB *process){
     //use numProcesses as index for where to insert
     if(!isFull(Q) && Q!=NULL && process != NULL){
         Q->pcbList[Q->numProcesses] = *process; //* because of the way PCB is defines (pass by value)
@@ -61,10 +61,12 @@ void runFCFS(ReadyQ *Q){
         PCB* process = &(Q->pcbList[0]);
 
         //run until compeletion
-        runProcess(process,process->remainingTime);
 
+        int timeRun = runProcess(process,process->remainingTime);
         //completed this Process, so print a message
-
+        Q->time = Q->time + process->remainingTime;
+        
+        printf("Time %d Completed PID %d\n", Q->time, process->pid);
         //remove completed process from Q
     }
 }
@@ -80,7 +82,7 @@ void removeFrontPCB(ReadyQ *Q){
     }
 }
 
-void print(ReadyQ* Q){
+void printQ(ReadyQ *Q){
     for(int i = 0; i < sizeof(Q->pcbList);i++){
         printf("%d/n",Q->pcbList[i]->pid);
         printf("%d/n",Q->pcbList[i]->totalTime);
