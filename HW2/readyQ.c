@@ -45,16 +45,13 @@ bool insertQ(ReadyQ *Q, PCB *process){
     }
 }
 
-
-
-PCB*remove(ReadyQ *Q){
-    ;
-}
-
 void sortQ(ReadyQ *Q){
+    // Q - pointer to a ReadyQueue
+    // post-condition: Sorts contents of queue into
+    // increasing order of remainingTime.  PCB with lowest
+    // remainingTime will occupy list slot index 0. 
     ;
 }
-
 
 void runFCFS(ReadyQ *Q){
     if(!isEmpty(Q)){
@@ -88,4 +85,12 @@ void printQ(ReadyQ *Q){
         printf("%d/n",Q->pcbList[i]->totalTime);
         printf("%d/n",Q->pcbList[i]->remainingTime);
     }
+}
+
+int runSRTF(ReadyQ* Q){
+    ;
+}
+
+int runRoundRobin(ReadyQ* Q, int timeSlice){
+    ;
 }

@@ -1,5 +1,6 @@
 # if !defined (PCB_Header)
 # define PCB_Header
+
 typedef struct{
     int pid, totalTime, remainingTime;
 }PCB;
