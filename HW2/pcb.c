@@ -12,15 +12,9 @@
     //process->totalTime = totalTime;
 //}
 void initProcess(PCB* process){
-    process->pid = 0;
-    process->totalTime = 0;
-    process->remainingTime = 0; 
-}
-
-void initProcessValues(PCB* process, int pid, int totalRunTime){
-    process->pid = pid; 
-    process->totalTime; 
-    process->remainingTime=totalRunTime;
+    process->pid = 0;
+    process->totalTime = 0;
+    process->remainingTime = 0; 
 }
 
 int runProcess(PCB *process, int time){
@@ -28,6 +22,12 @@ int runProcess(PCB *process, int time){
         if(time < (*process).remainingTime){
         (*process).remainingTime -= time;
     }
+}
+
+void initProcessValues(PCB* process, int pid, int totalTime){
+    process->pid = pid; 
+    process->totalTime; 
+    process->remainingTime = totalTime;
 }
 
 

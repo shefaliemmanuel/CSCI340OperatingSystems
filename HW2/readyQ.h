@@ -29,7 +29,7 @@ bool insertQ(ReadyQ *Q);
 
 PCB*remove(ReadyQ *Q);
 
-void bubbleSort(ReadyQ *Q);
+void sortQ(ReadyQ *Q);
 
 void runFCFS(ReadyQ *Q);
 

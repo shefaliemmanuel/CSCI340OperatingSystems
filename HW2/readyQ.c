@@ -51,7 +51,7 @@ PCB*remove(ReadyQ *Q){
     ;
 }
 
-void bubbleSort(ReadyQ *Q){
+void sortQ(ReadyQ *Q){
     ;
 }
 
