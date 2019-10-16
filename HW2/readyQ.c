@@ -95,11 +95,13 @@ int runSRTF(ReadyQ* Q){
 // Q - pointer to a ReadyQueue
 // post-condition: if Q is not empty, then call sort to arrange the
 // Q in ascending order of time time remaining to complete.
-// Run first process in Q to completion.  Shift all remaining
-// PCBs one array slot forward so second is now first.
+// Run first process in Q to completion.  Shift all remaining PCBs one array slot forward so second is now first.
 // Return number of units of time that first process ran
-
-    ;
+    if(!isEmpty(Q)){
+        sortQ(Q);
+        removeFrontPCB(Q);
+        sizeOfQ(Q);
+    }
 }
 
 int runRoundRobin(ReadyQ* Q, int timeSlice){
@@ -108,6 +110,10 @@ int runRoundRobin(ReadyQ* Q, int timeSlice){
 // on first PCB in the queue.  After running the process, move it
 // to the rear of the Q
 // Return number of units of time that first process ran
-
-    ;
+    if(!isEmpty(Q)){
+        runProcess(Q->pcblist[0],Q->time);
+        Q->pcbList[0] = Q->pcbList[Q->numProcesses+1];
+        removeFrontPCB(Q);
+        sizeOfQ(Q);
+    }
 }
