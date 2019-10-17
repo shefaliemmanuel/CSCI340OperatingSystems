@@ -68,11 +68,5 @@ int runSRTF(ReadyQ* Q);
 // PCBs one array slot forward so second is now first.
 // Return number of units of time that first process ran
 
-int runRoundRobin(ReadyQ* Q, int timeSlice);
-// Q - pointer to a ReadyQueue
-// post-condition: if Q is not empty, then call runProcess function
-// on first PCB in the queue.  After running the process, move it
-// to the rear of the Q
-// Return number of units of time that first process ran
 
 #endif

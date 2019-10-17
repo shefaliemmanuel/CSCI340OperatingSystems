@@ -26,9 +26,9 @@ void main(){
     //init_process(&c, 3, 10);
 
     //confirm initialization- print PID 1 TimeRemaining 10
-    printf("PID %d TimeLeft %d\n", a.pid, a.remainingTime);
-    printf("PID %d TimeLeft %d\n", b.pid, b.remainingTime);
-    printf("PID %d TimeLeft %d\n", c.pid, c.remainingTime);
+    //printf("PID %d TimeLeft %d\n", a.pid, a.remainingTime);
+    //printf("PID %d TimeLeft %d\n", b.pid, b.remainingTime);
+    //printf("PID %d TimeLeft %d\n", c.pid, c.remainingTime);
 
     //declare a ReadyQ
     ReadyQ shefQ;
@@ -43,10 +43,7 @@ void main(){
     insertQ(&shefQ, &b);
     insertQ(&shefQ, &c);
 
-    if(!isEmpty(shefQ)){
-        for(int i = 0; i <= (&shefQ.numProcesses);i++){
-            printQ(&shefQ);
-            runFCFS(&shefQ);
-        }
+    while(!isEmpty(shefQ)){
+        runFCFS(&shefQ);
     }
 }

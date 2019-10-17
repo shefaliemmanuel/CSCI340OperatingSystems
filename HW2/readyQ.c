@@ -8,6 +8,7 @@
 
 void emptyQueue(ReadyQ *Q){
     Q->numProcesses = 0;
+    Q->time = 0;
     //memset(Q->processList,0,Q->numProcesses)
     //Q->pcbList[0];
 }
@@ -101,20 +102,6 @@ int runSRTF(ReadyQ* Q){
 // Return number of units of time that first process ran
     if(!isEmptyQueue(Q)){
         sortQ(Q);
-        removeFrontPCB(Q);
-        sizeOfQ(Q);
-    }
-}
-
-int runRoundRobin(ReadyQ* Q, int timeSlice){
-// Q - pointer to a ReadyQueue
-// post-condition: if Q is not empty, then call runProcess function
-// on first PCB in the queue.  After running the process, move it
-// to the rear of the Q
-// Return number of units of time that first process ran
-    if(!isEmptyQueue(Q)){
-        runProcess(&(Q->pcbList[0]),&(Q->time));
-        Q->pcbList[0] = Q->pcbList[Q->numProcesses+1];
         removeFrontPCB(Q);
         sizeOfQ(Q);
     }
