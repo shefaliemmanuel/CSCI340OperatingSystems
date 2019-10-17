@@ -25,9 +25,9 @@ void main(){
     //c.remainingTime = 0;
 
     //USE & to turn a into the pointer to a
-    init_process(&a, 1, 30); 
-    init_process(&b, 2, 20);
-    init_process(&c, 3, 10);
+    initProcessValues(&a, 1, 30); 
+    initProcessValues(&b, 2, 20);
+    initProcessValues(&c, 3, 10);
 
     //confirm initialization- print PID 1 TimeRemaining 10
     //printf("PID %d TimeLeft %d\n", a.pid, a.remainingTime);
