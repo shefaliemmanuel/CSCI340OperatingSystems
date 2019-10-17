@@ -19,7 +19,7 @@ void initProcess(PCB* process){
 
 int runProcess(PCB *process, int ptime){
     if(process != NULL){
-        if(ptime >= process->remainingTime){
+        if(process->remainingTime  >= ptime){
             int returnMe = ptime;
             process->remainingTime = process->remainingTime - ptime;
             return returnMe;
@@ -29,7 +29,13 @@ int runProcess(PCB *process, int ptime){
             process->remainingTime = 0;
             return returnMe;
         }
+    
     }
+    else
+    {
+        return 0;
+    }
+    
 }
 
 void initProcessValues(PCB* process, int pid, int totalTime){
