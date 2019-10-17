@@ -56,6 +56,7 @@ void sortQ(ReadyQ *Q){
             Q->pcbList[i] = Q->pcbList[i+1];
             Q->pcbList[i + 1] = temp;
         }
+    }
 }
 
 void runFCFS(ReadyQ *Q){
