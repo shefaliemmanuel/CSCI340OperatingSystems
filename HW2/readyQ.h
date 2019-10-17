@@ -30,7 +30,7 @@ int sizeOfQ(ReadyQ *Q);
 // Q - pointer to a ReadyQueue
 // returns number of processes stored in the queue.
 
-bool insertQ(ReadyQ *Q, PCB *process);
+bool insertQ(ReadyQ *Q, PCB *processc);
 // Q - pointer to a ReadyQueue
 // process - pointer to a PCB
 // post-condition: if Q is not full, then insert process
