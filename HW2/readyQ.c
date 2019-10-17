@@ -1,6 +1,8 @@
 # include "readyQ.h"
+# include "pcb.h"
 # include <stdbool.h>
 # include <stddef.h>
+# include <stdio.h>
 
 //set list to empty state
 //numProcesses = 0;
@@ -89,9 +91,10 @@ void removeFrontPCB(ReadyQ *Q){
 
 void printQ(ReadyQ *Q){
     for(int i = 0; i < sizeof(Q->pcbList);i++){
-        printf("%d/n",Q->pcbList[i].pid);
-        printf("%d/n",Q->pcbList[i].totalTime);
-        printf("%d/n",Q->pcbList[i].remainingTime);
+        printf("%d/n",&Q->pcbList[i].pid);
+        printf("%d/n",&Q->pcbList[i].totalTime);
+        printf("%d/n",&Q->pcbList[i].remainingTime);
+
     }
 }
 
