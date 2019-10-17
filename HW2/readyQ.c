@@ -87,10 +87,8 @@ void removeFrontPCB(ReadyQ *Q){
 }
 
 void printQ(ReadyQ *Q){
-    for(int i = 0; i < sizeof(Q->pcbList);i++){
-        printf("PID: %d\n",Q->pcbList[i].pid);
-        printf("TOTAL TIME: %d\n",Q->pcbList[i].totalTime);
-        printf("REMAINING TIME: %d\n",Q->pcbList[i].remainingTime);
+    for(int i = 0; i < Q->numProcesses;i++){
+        printProcesses(&Q->pcbList[i]);
     }
 }
 

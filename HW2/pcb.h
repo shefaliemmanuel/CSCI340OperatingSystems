@@ -7,6 +7,8 @@ typedef struct{
 
 // comments from pcb.c
 
+void printProcesses(PCB* process);
+
 void initProcess(PCB* process);
 // process - Pointer to a PCB
 // post-condition: assigns all attributes to have value 0.

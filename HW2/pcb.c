@@ -34,4 +34,10 @@ void initProcessValues(PCB* process, int pid, int totalTime){
     process->remainingTime = totalTime;
 }
 
+void printProcesses(PCB* process){
+    printf("PID: %d\n",process->pid);
+    printf("TOTAL TIME: %d\n",process->totalTime);
+    printf("REMAINING TIME: %d\n",process->remainingTime);
+}
+
 
