@@ -20,7 +20,8 @@ void initProcess(PCB* process){
 int runProcess(PCB *process, int time){
     if(process != NULL){
         if(time < (*process).remainingTime){
-        (*process).remainingTime -= time;
+            (*process).remainingTime -= time;
+        }
     }
 }
 

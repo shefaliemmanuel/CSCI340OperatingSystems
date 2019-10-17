@@ -50,7 +50,7 @@ void sortQ(ReadyQ *Q){
     // Q - pointer to a ReadyQueue
     // post-condition: Sorts contents of queue into increasing order of remainingTime.  PCB with lowest remainingTime will occupy list slot index 0. 
     for(int i = 0; i < sizeof(Q->pcbList);i++){
-        if (Q->pcbList[i]->remainingTime >= Q->pcbList[i+1]->remainingTime){
+        if (Q->pcbList[i].remainingTime >= Q->pcbList[i+1].remainingTime){
             PCB temp;
             temp = Q->pcbList[i];
             Q->pcbList[i] = Q->pcbList[i+1];
@@ -86,9 +86,9 @@ void removeFrontPCB(ReadyQ *Q){
 
 void printQ(ReadyQ *Q){
     for(int i = 0; i < sizeof(Q->pcbList);i++){
-        printf("%d/n",Q->pcbList[i]->pid);
-        printf("%d/n",Q->pcbList[i]->totalTime);
-        printf("%d/n",Q->pcbList[i]->remainingTime);
+        printf("%d/n",Q->pcbList[i].pid);
+        printf("%d/n",Q->pcbList[i].totalTime);
+        printf("%d/n",Q->pcbList[i].remainingTime);
     }
 }
 
@@ -112,7 +112,7 @@ int runRoundRobin(ReadyQ* Q, int timeSlice){
 // to the rear of the Q
 // Return number of units of time that first process ran
     if(!isEmptyQueue(Q)){
-        runProcess(Q->pcblist[0],Q->time);
+        runProcess(Q->pcbList[0],Q->time);
         Q->pcbList[0] = Q->pcbList[Q->numProcesses+1];
         removeFrontPCB(Q);
         sizeOfQ(Q);

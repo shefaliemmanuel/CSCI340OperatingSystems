@@ -39,12 +39,12 @@ void main(){
     shefQ.time = 0;
 
     //insert process A into Q
-    bool sucessInsert = insertQ(&shefQ, &a);
-    bool sucessInsert = insertQ(&shefQ, &b);
-    bool sucessInsert = insertQ(&shefQ, &c);
+    insertQ(&shefQ, &a);
+    insertQ(&shefQ, &b);
+    insertQ(&shefQ, &c);
 
     if(!isEmpty(shefQ)){
-        for(int i = 0; i < (&shefQ.numProcesses);i++){
+        for(int i = 0; i <= (&shefQ.numProcesses);i++){
             printQ(&shefQ);
             runFCFS(&shefQ);
         }
