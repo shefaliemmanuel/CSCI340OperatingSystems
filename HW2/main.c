@@ -48,7 +48,6 @@ void main(){
     insertQ(&shefQ, &c);
 
     while(!isEmptyQueue(&shefQ)){
-        printQ(&shefQ);
         runFCFS(&shefQ);
         
     }
