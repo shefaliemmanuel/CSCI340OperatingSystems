@@ -31,6 +31,7 @@ void main(){
 
     while(!isEmptyQueue(&shefQ)){
         printQ(&shefQ);
+        printf("\n");
         runFCFS(&shefQ);
     }
 }
