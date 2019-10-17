@@ -91,7 +91,6 @@ void printQ(ReadyQ *Q){
         printf("PID: %d\n",Q->pcbList[i].pid);
         printf("TOTAL TIME: %d\n",Q->pcbList[i].totalTime);
         printf("REMAINING TIME: %d\n",Q->pcbList[i].remainingTime);
-
     }
 }
 
