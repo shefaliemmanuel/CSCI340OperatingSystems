@@ -30,14 +30,7 @@ int runProcess(PCB *process, int ptime){
             process->remainingTime = 0;
             return returnMe;
         }
-    
     }
-    else
-    {
-        printf("this is in the last else");
-        return 0;
-    }
-    
 }
 
 void initProcessValues(PCB* process, int pid, int totalTime){

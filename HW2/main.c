@@ -49,6 +49,5 @@ void main(){
 
     while(!isEmptyQueue(&shefQ)){
         runFCFS(&shefQ);
-        
     }
 }
