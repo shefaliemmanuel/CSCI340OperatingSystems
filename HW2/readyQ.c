@@ -72,6 +72,7 @@ void runFCFS(ReadyQ *Q){
         
         printf("Time %d Completed PID %d\n", Q->time, process->pid);
         //remove completed process from Q
+        removeFrontPCB(Q);
     }
 }
 
