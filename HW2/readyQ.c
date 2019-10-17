@@ -54,11 +54,11 @@ void sortQ(ReadyQ *Q){
     // post-condition: Sorts contents of queue into increasing order of remainingTime.  PCB with lowest remainingTime will occupy list slot index 0. 
     for(int i = 0; i < Q->numProcesses;i++){
         for(int j = 0; j < Q->numProcesses-i-1;j++){
-            if (Q->pcbList[i].remainingTime > Q->pcbList[j+1].remainingTime){
+            if (Q->pcbList[j].remainingTime > Q->pcbList[j+1].remainingTime){
                 PCB temp;
-                temp = Q->pcbList[i];
-                Q->pcbList[i] = Q->pcbList[i+1];
-                Q->pcbList[i + 1] = temp;
+                temp = Q->pcbList[j];
+                Q->pcbList[j] = Q->pcbList[j+1];
+                Q->pcbList[j + 1] = temp;
             }
         }
     }
@@ -69,7 +69,6 @@ void runFCFS(ReadyQ *Q){
         PCB* process = &(Q->pcbList[0]);
 
         //run until compeletion
-
         int timeRun = runProcess(process,process->remainingTime);
         //completed this Process, so print a message
         Q->time = Q->time + timeRun;
