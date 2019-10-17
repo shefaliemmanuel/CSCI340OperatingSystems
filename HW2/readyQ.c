@@ -91,9 +91,9 @@ void removeFrontPCB(ReadyQ *Q){
 
 void printQ(ReadyQ *Q){
     for(int i = 0; i < sizeof(Q->pcbList);i++){
-        printf("%d/n",&Q->pcbList[i].pid);
-        printf("%d/n",&Q->pcbList[i].totalTime);
-        printf("%d/n",&Q->pcbList[i].remainingTime);
+        printf("%d/n",Q->pcbList[i].pid);
+        printf("%d/n",Q->pcbList[i].totalTime);
+        printf("%d/n",Q->pcbList[i].remainingTime);
 
     }
 }
