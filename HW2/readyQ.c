@@ -52,8 +52,8 @@ bool insertQ(ReadyQ *Q, PCB *process){
 void sortQ(ReadyQ *Q){
     // Q - pointer to a ReadyQueue
     // post-condition: Sorts contents of queue into increasing order of remainingTime.  PCB with lowest remainingTime will occupy list slot index 0. 
-    for(int i = 0; i < Q->numProcesses;i++){
-        for(int j = 0; j < Q->numProcesses-i-1;j++){
+    for(int i = 0; i < Q->numProcesses; i++){
+        for(int j = 0; j < Q->numProcesses-i-1; j++){
             if (Q->pcbList[j].remainingTime > Q->pcbList[j+1].remainingTime){
                 PCB temp;
                 temp = Q->pcbList[j];
@@ -81,7 +81,7 @@ void runFCFS(ReadyQ *Q){
 
 void removeFrontPCB(ReadyQ *Q){
     if(Q->numProcesses > 1){
-        for(int i=0; i < (Q->numProcesses-1);i++){
+        for(int i=0; i < Q->numProcesses-1; i++){
             Q->pcbList[i] = Q->pcbList[i+1];
         }
     }
