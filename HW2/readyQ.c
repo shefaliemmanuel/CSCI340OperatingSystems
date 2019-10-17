@@ -70,7 +70,6 @@ void runFCFS(ReadyQ *Q){
 
         //run until compeletion
         int timeRun = runProcess(process,process->remainingTime);
-        printf("%d", timeRun);
         //completed this Process, so print a message
         Q->time = Q->time + timeRun;
         
