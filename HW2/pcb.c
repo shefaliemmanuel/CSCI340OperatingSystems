@@ -1,5 +1,6 @@
 # include "pcb.h"
 # include <stddef.h>
+# include <stdio.h>
 
 // simulate CPU run of a process
 // &process_address of PCB
@@ -33,6 +34,7 @@ int runProcess(PCB *process, int ptime){
     }
     else
     {
+        printf("this is in the last else");
         return 0;
     }
     
