@@ -20,7 +20,7 @@ void initProcess(PCB* process){
 
 int runProcess(PCB *process, int ptime){
     if(process != NULL){
-        if(process->remainingTime  >= ptime){
+        if( ptime >= process->remainingTime){
             int returnMe = ptime;
             process->remainingTime = process->remainingTime - ptime;
             return returnMe;
