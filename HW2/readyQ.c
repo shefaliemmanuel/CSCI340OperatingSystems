@@ -68,7 +68,7 @@ void runFCFS(ReadyQ *Q){
 
         int timeRun = runProcess(process,process->remainingTime);
         //completed this Process, so print a message
-        Q->time = Q->time + process->remainingTime;
+        Q->time = Q->time + timeRun;
         
         printf("Time %d Completed PID %d\n", Q->time, process->pid);
         //remove completed process from Q
