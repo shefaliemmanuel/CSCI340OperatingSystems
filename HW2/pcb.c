@@ -18,11 +18,11 @@ void initProcess(PCB* process){
     process->remainingTime = 0; 
 }
 
-int runProcess(PCB *process, int ptime){
+int runProcess(PCB *process, int runTime){
     if(process != NULL){
-        if( ptime >= process->remainingTime){
-            int returnMe = ptime;
-            process->remainingTime = process->remainingTime - ptime;
+        if( runTime >= process->remainingTime){
+            int returnMe = runTime;
+            process->remainingTime = process->remainingTime - runTime;
             return returnMe;
         }
         else{
