@@ -20,7 +20,10 @@ void main(){
     c.pid = 3;
     c.totalTime = 10;
 
-    //init_process(&a, 1, 10); USE & to turn a into the pointer to a
+    //USE & to turn a into the pointer to a
+    //init_process(&a, 1, 30); 
+    //init_process(&b, 2, 20);
+    //init_process(&c, 3, 10);
 
     //confirm initialization- print PID 1 TimeRemaining 10
     printf("PID %d TimeLeft %d\n", a.pid, a.remainingTime);
@@ -41,9 +44,9 @@ void main(){
     bool sucessInsert = insertQ(&shefQ, &c);
 
     if(!isEmpty(shefQ)){
-        for(int i = 0; i < (&shefQ->numProcesses);i++){
-            printf("What is in shefQ?  %d\n", printQ(&shefQ));
-            printf("What is shefQ size?  %d\n", runFCFS(&shefQ));
+        for(int i = 0; i < (&shefQ.numProcesses);i++){
+            printQ(&shefQ);
+            runFCFS(&shefQ);
         }
     }
 }
