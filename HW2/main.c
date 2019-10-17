@@ -1,5 +1,6 @@
 # include "pcb.h"
 # include "readyQ.h"
+# include <stdbool.h>
 # include <stddef.h>
 # include <stdio.h>
 
