@@ -3,8 +3,8 @@
 # include <stddef.h>
 
 //set list to empty state
-numProcesses = 0;
-time = 0;
+//numProcesses = 0;
+//time = 0;
 
 void emptyQueue(ReadyQ *Q){
     Q->numProcesses = 0;
@@ -113,7 +113,7 @@ int runRoundRobin(ReadyQ* Q, int timeSlice){
 // to the rear of the Q
 // Return number of units of time that first process ran
     if(!isEmptyQueue(Q)){
-        runProcess(&Q->pcbList[0],Q->time);
+        runProcess(&(Q->pcbList[0]),&(Q->time));
         Q->pcbList[0] = Q->pcbList[Q->numProcesses+1];
         removeFrontPCB(Q);
         sizeOfQ(Q);
