@@ -14,11 +14,11 @@ typedef struct{
     int time;
 }ReadyQ;
 
-void empty(ReadyQ *Q);
+void emptyQueue(ReadyQ *Q);
 // Q - pointer to a ReadyQueue
 // post-conditon: sets numProcesses = 0
 
-bool isEmpty(ReadyQ *Q);
+bool isEmptyQueue(ReadyQ *Q);
 // Q - pointer to a ReadyQueue
 // returns true if queue is empty - contains no processes; else, false.
 
@@ -30,7 +30,7 @@ int sizeOfQ(ReadyQ *Q);
 // Q - pointer to a ReadyQueue
 // returns number of processes stored in the queue.
 
-bool insertQ(ReadyQ *Q);
+bool insertQ(ReadyQ *Q, PCB *process);
 // Q - pointer to a ReadyQueue
 // process - pointer to a PCB
 // post-condition: if Q is not full, then insert process

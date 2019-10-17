@@ -4,13 +4,14 @@
 
 //set list to empty state
 numProcesses = 0;
+time = 0;
 
-void empty(ReadyQ *Q){
+void emptyQueue(ReadyQ *Q){
     Q->numProcesses = 0;
     //memset(Q->processList,0,Q->numProcesses)
     //Q->pcbList[0];
 }
-bool isEmpty(ReadyQ *Q){
+bool isEmptyQueue(ReadyQ *Q){
     if(Q->numProcesses == 0){
         return true;
     }else{
@@ -58,7 +59,7 @@ void sortQ(ReadyQ *Q){
 }
 
 void runFCFS(ReadyQ *Q){
-    if(!isEmpty(Q)){
+    if(!isEmptyQueue(Q)){
         PCB* process = &(Q->pcbList[0]);
 
         //run until compeletion
@@ -78,7 +79,7 @@ void removeFrontPCB(ReadyQ *Q){
             Q->pcbList[i] = Q->pcbList[i+1];
         }
     }
-    if(!isEmpty(Q)){
+    if(!isEmptyQueue(Q)){
         Q->numProcesses = Q->numProcesses - 1;
     }
 }
@@ -97,7 +98,7 @@ int runSRTF(ReadyQ* Q){
 // Q in ascending order of time time remaining to complete.
 // Run first process in Q to completion.  Shift all remaining PCBs one array slot forward so second is now first.
 // Return number of units of time that first process ran
-    if(!isEmpty(Q)){
+    if(!isEmptyQueue(Q)){
         sortQ(Q);
         removeFrontPCB(Q);
         sizeOfQ(Q);
@@ -110,7 +111,7 @@ int runRoundRobin(ReadyQ* Q, int timeSlice){
 // on first PCB in the queue.  After running the process, move it
 // to the rear of the Q
 // Return number of units of time that first process ran
-    if(!isEmpty(Q)){
+    if(!isEmptyQueue(Q)){
         runProcess(Q->pcblist[0],Q->time);
         Q->pcbList[0] = Q->pcbList[Q->numProcesses+1];
         removeFrontPCB(Q);

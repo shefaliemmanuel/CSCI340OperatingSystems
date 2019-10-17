@@ -5,35 +5,45 @@
 
 void main(){
 
-    //declare a PCB
+    //declare each PCB
     PCB a;
-    //declare a PCB
-    a.pid=1; //lazy way with out init
-    a.totalTime=10; //lazy way
+    PCB b;
+    PCB c;
+
+    //initialize each PCB to certian values
+    a.pid = 1;
+    a.totalTime = 30;
+
+    b.pid = 2;
+    b.totalTime = 20;
+
+    c.pid = 3;
+    c.totalTime = 10;
+
     //init_process(&a, 1, 10); USE & to turn a into the pointer to a
 
     //confirm initialization- print PID 1 TimeRemaining 10
     printf("PID %d TimeLeft %d\n", a.pid, a.remainingTime);
+    printf("PID %d TimeLeft %d\n", b.pid, b.remainingTime);
+    printf("PID %d TimeLeft %d\n", c.pid, c.remainingTime);
 
     //declare a ReadyQ
     ReadyQ shefQ;
+
     //initialize to empty
     //Pass shefQ by address using the & address-of operator
-    empty(&shefQ);
-
-    //test isEmpty, isFull, size
-    printf("Is shefQ empty %d?\n", isEmpty(&shefQ));
-    printf("Is shefQ full %d?\n", isFull(&shefQ));
-    printf("What is shefQ size?  %d\n", sizeOfQ(&shefQ));
+    emptyQueue(&shefQ);
+    shefQ.time = 0;
 
     //insert process A into Q
     bool sucessInsert = insertQ(&shefQ, &a);
-    printf("Was the insert sucessful?  %d\n", sucessInsert)
+    bool sucessInsert = insertQ(&shefQ, &b);
+    bool sucessInsert = insertQ(&shefQ, &c);
 
-    //unit testing
-    printQ(&shefQ);
-
-    //one run of FCFS
-    runFCFS(&shefQ)
-
+    if(!isEmpty(shefQ)){
+        for(int i = 0; i < (&shefQ->numProcesses);i++){
+            printf("What is in shefQ?  %d\n", printQ(&shefQ));
+            printf("What is shefQ size?  %d\n", runFCFS(&shefQ));
+        }
+    }
 }
