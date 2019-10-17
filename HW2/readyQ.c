@@ -4,10 +4,6 @@
 # include <stddef.h>
 # include <stdio.h>
 
-//set list to empty state
-//numProcesses = 0;
-//time = 0;
-
 void emptyQueue(ReadyQ *Q){
     Q->numProcesses = 0;
     Q->time = 0;
