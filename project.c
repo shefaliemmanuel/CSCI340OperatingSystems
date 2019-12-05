@@ -37,7 +37,7 @@ void *consumer(void*arg){
     }
 }
 
-void *procuder(void*arg){
+void *producer(void*arg){
     for(int i = 0; i < 100000;i++){
         sem_wait(&empty);
         sem_wait(&mutex);
@@ -46,7 +46,6 @@ void *procuder(void*arg){
         sem_post(&full);
     }
 }
-
 
 void *mythread(void*arg){
     printf("Start%s\n", (char*)arg);
@@ -72,6 +71,7 @@ int main(int argc, char*argv[]){
     printf("main:begin\n");
     rc = pthread_create(&p1,NULL,mythread,"A");
     assert(rc==0);
+    producer(rc);
     rc = pthread_create(&p2,NULL,mythread,"B");
     assert(rc==0);
     rc = pthread_join(p1, NULL);
@@ -80,12 +80,5 @@ int main(int argc, char*argv[]){
     assert(rc==0);
     printf("main:end\n");
     return 0;
-
-    // Exercise 2
 }
 
-//What happens if we reverse these statements in producer?
-
-// What happens if we reverse these statements in consumer?
-
-//Demonstrate a race condition wit ha mutex violation.
