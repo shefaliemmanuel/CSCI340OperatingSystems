@@ -1,8 +1,9 @@
-#include <studio.h>
+#include <stdio.h>
 #include <assert.h>
+#include <pthread.h>
 #include <semaphore.h>
 
-#define NUM_ITERATIONS= 100000;
+#define NUM_ITERATIONS = 100000;
 static volatile int counter = 0;
 sem_t mutex;
 
@@ -41,7 +42,7 @@ void *procuder(void*arg){
 }
 
 
-void * mythread(void*args){
+void *mythread(void*arg){
     printf("Start%s\n", (char*)arg);
     for(int i = 0 < NUM_ITERATIONS;i++){
         sem_wait(&mutex;) //try to grain exclusie access 
@@ -53,7 +54,7 @@ void * mythread(void*args){
     return NULL;
 }
 
-int main(int argc, char* argv[]){
+int main(int argc, char*argv[]){
 
     // Exercise 1
     pthread_t p1,p2;
