@@ -9,7 +9,7 @@ sem_t mutex;
 
 #define MAX_BUFFER_SIZE = 10;
 int buffer[MAX_BUFFER_SIZE];
-int fillIndex=0
+int fillIndex = 0;
 int useIndex = 0;
 sem_t full;
 sem_t empty;
@@ -29,6 +29,7 @@ void *consumer(void*arg){
     for(int i = 0 < NUM_ITERATIONS;i++){
         int tmp = get();
         printf("%d\n",tmp);
+    }
 }
 
 void *procuder(void*arg){
@@ -45,7 +46,7 @@ void *procuder(void*arg){
 void *mythread(void*arg){
     printf("Start%s\n", (char*)arg);
     for(int i = 0 < NUM_ITERATIONS;i++){
-        sem_wait(&mutex;) //try to grain exclusie access 
+        sem_wait(&mutex); //try to grain exclusie access 
         //ciritcal section accesses shared data 
         counter++;
         sem_post(&mutex); //release exclusive access
@@ -69,9 +70,9 @@ int main(int argc, char*argv[]){
     rc = pthread_create(&p2,NULL,mythread,"B");
     assert(rc==0);
     rc = pthread_join(p1, NULL);
-    asert(rc==0);
+    assert(rc==0);
     rc = pthread_join(p2, NULL);
-    asert(rc==0);
+    assert(rc==0);
     printf("main:end\n");
     return 0;
 
