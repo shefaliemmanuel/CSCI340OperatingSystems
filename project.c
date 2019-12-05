@@ -3,37 +3,38 @@
 #include <pthread.h>
 #include <semaphore.h>
 
+//#define NUM_ITERATIONS = 100000;
+//#define MAX_BUFFER_SIZE = 10;
 static volatile int counter = 0;
 sem_t mutex;
 sem_t full;
 sem_t empty;
 
 void put(int value){
-    #define MAX_BUFFER_SIZE = 10;
-    int buffer[MAX_BUFFER_SIZE];
+
+    int buffer[10];
     int fillIndex = 0;
     buffer[fillIndex] = value;
-    fillIndex = (fillIndex+1)%MAX_BUFFER_SIZE;
+    fillIndex = (fillIndex+1)%10;
 }
 
 int get(){
     int useIndex = 0;
     int temp = buffer[useIndex];
-    useIndex = (useIndex+1)%MAX_BUFFER_SIZE;
+    useIndex = (useIndex+1)%10;
     return temp;
 }
 
 void *consumer(void*arg){
-    #define NUM_ITERATIONS = 100000;
-    for(int i = 0 < NUM_ITERATIONS;i++){
+   
+    for(int i = 0 < 100000;i++){
         int tmp = get();
         printf("%d\n",tmp);
     }
 }
 
 void *procuder(void*arg){
-    #define NUM_ITERATIONS = 100000;
-    for(int i = 0; i< NUM_ITERATIONS;i++){
+    for(int i = 0; i < 100000;i++){
         sem_wait(&empty);
         sem_wait(&mutex);
         put(i);
@@ -45,8 +46,7 @@ void *procuder(void*arg){
 
 void *mythread(void*arg){
     printf("Start%s\n", (char*)arg);
-    #define NUM_ITERATIONS = 100000;
-    for(int i = 0 < NUM_ITERATIONS;i++){
+    for(int i = 0 < 100000;i++){
         sem_wait(&mutex); //try to grain exclusie access 
         //ciritcal section accesses shared data 
         counter++;
