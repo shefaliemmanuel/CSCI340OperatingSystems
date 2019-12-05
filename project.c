@@ -1,17 +1,21 @@
 #include <stdio.h>
 #include <assert.h>
 #include <pthread.h>
+#include <string.h>
+#include <unistd.h>
+#include <stdlib.h>
 #include <semaphore.h>
 
 //#define NUM_ITERATIONS = 100000;
 //#define MAX_BUFFER_SIZE = 10;
+//https://www.includehelp.com/c-programming-questions/compiling-program-with-pthread-library-linux.aspx
+
 static volatile int counter = 0;
 sem_t mutex;
 sem_t full;
 sem_t empty;
 
 void put(int value){
-
     int buffer[10];
     int fillIndex = 0;
     buffer[fillIndex] = value;
@@ -20,14 +24,14 @@ void put(int value){
 
 int get(){
     int useIndex = 0;
+    int buffer[useIndex];
     int temp = buffer[useIndex];
     useIndex = (useIndex+1)%10;
     return temp;
 }
 
 void *consumer(void*arg){
-   
-    for(int i = 0 < 100000;i++){
+    for(int i = 0; i < 100000; i++){
         int tmp = get();
         printf("%d\n",tmp);
     }
@@ -46,7 +50,7 @@ void *procuder(void*arg){
 
 void *mythread(void*arg){
     printf("Start%s\n", (char*)arg);
-    for(int i = 0 < 100000;i++){
+    for(int i = 0; i < 100000; i++){
         sem_wait(&mutex); //try to grain exclusie access 
         //ciritcal section accesses shared data 
         counter++;
