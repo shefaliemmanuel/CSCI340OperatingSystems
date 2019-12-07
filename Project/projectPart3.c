@@ -34,23 +34,24 @@ int get()
 
 void *consumer(void *arg)
 {
-    //sem_wait(&full);
-    //sem_wait(&mutex);
+    sem_wait(&full);
+    sem_wait(&mutex);
     int tmp = get();
-    sem_post(&mutex);
+    //sem_post(&mutex);
     sem_post(&empty);
     printf("Consuming %d from the buff\n", tmp);
 }
-
+    
 void *producer(void *arg)
 {
-    //sem_wait(&empty);
-    //sem_wait(&mutex);
+    sem_wait(&empty);
+    sem_wait(&mutex);
     put(counter);
-    sem_post(&mutex);
+    //sem_post(&mutex);
     sem_post(&full);
     printf("Adding %d to the buffer\n", counter);
     counter++;
+
 }
 
 int main(int argc, char *argv[])
