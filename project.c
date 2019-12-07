@@ -6,57 +6,46 @@
 #include <stdlib.h>
 #include <semaphore.h>
 
-//#define NUM_ITERATIONS = 100000;
-//#define MAX_BUFFER_SIZE = 10;
+#define NUM_ITERATIONS 100000
+#define MAX_BUFFER_SIZE 100
 //https://www.includehelp.com/c-programming-questions/compiling-program-with-pthread-library-linux.aspx
 
-static volatile int counter = 0;
+int counter = 0;
 sem_t mutex;
 sem_t full;
 sem_t empty;
+int buffer[MAX_BUFFER_SIZE];
+int fillIndex = 0;
+int useIndex = 0;
 
 void put(int value){
-    int buffer[10];
-    int fillIndex = 0;
     buffer[fillIndex] = value;
-    fillIndex = (fillIndex+1)%10;
+    fillIndex = (fillIndex+1);
 }
 
 int get(){
-    int useIndex = 0;
-    int buffer[useIndex];
     int temp = buffer[useIndex];
-    useIndex = (useIndex+1)%10;
+    useIndex = (useIndex+1);
     return temp;
 }
 
-void *consumer(void*arg){
-    for(int i = 0; i < 100000; i++){
+void *consumer(void*arg){   
+        sem_wait(&full);
+        sem_wait(&mutex);
         int tmp = get();
-        printf("%d\n",tmp);
-    }
+        sem_post(&mutex);
+        sem_post(&empty);
+        printf("Consuming %d from the buff\n",tmp);   
 }
 
 void *producer(void*arg){
-    for(int i = 0; i < 100000;i++){
         sem_wait(&empty);
         sem_wait(&mutex);
-        put(i);
+        put(counter);
         sem_post(&mutex);
         sem_post(&full);
-    }
-}
-
-void *mythread(void*arg){
-    printf("Start%s\n", (char*)arg);
-    for(int i = 0; i < 100000; i++){
-        sem_wait(&mutex); //try to grain exclusie access 
-        //ciritcal section accesses shared data 
+        printf("Adding %d to the buffer\n", counter);
         counter++;
-        sem_post(&mutex); //release exclusive access
-    }
-    printf("Finish%s\n",(char *)arg);
-    return NULL;
 }
 
 int main(int argc, char*argv[]){
@@ -67,18 +56,25 @@ int main(int argc, char*argv[]){
 
     //initialize semaphore that will garuntee mutal exclusive access to the shared counter
     sem_init(&mutex,0,1); //at most 1 may access guarded resources
+    sem_init(&full,0,0);
+    sem_init(&empty, 0, MAX_BUFFER_SIZE);
 
     printf("main:begin\n");
-    rc = pthread_create(&p1,NULL,mythread,"A");
-    assert(rc==0);
-    producer(rc);
-    rc = pthread_create(&p2,NULL,mythread,"B");
-    assert(rc==0);
-    rc = pthread_join(p1, NULL);
-    assert(rc==0);
-    rc = pthread_join(p2, NULL);
-    assert(rc==0);
+    for(int s = 0; s < MAX_BUFFER_SIZE; s++){
+        pthread_create(&p1,NULL,producer,"A");
+        pthread_create(&p2,NULL,consumer,"B");
+        pthread_join(p1, NULL);
+        pthread_join(p2, NULL);
+    }
     printf("main:end\n");
+    printf("Produced Item Total: %d\n", fillIndex);
+    printf("Consumed Item Total: %d\n",useIndex);
+
+    printf("Destory everything\n");
+    sem_destroy(&mutex);
+    sem_destroy(&full);
+    sem_destroy(&empty);
+    
     return 0;
 }
 
