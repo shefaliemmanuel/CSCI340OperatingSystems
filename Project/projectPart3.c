@@ -34,29 +34,34 @@ int get()
 
 void *consumer(void *arg)
 {
+    for (int s = 0; s < MAX_BUFFER_SIZE; s++)
+   {
     sem_wait(&full);
-    sem_wait(&mutex);
+    //sem_wait(&mutex);
     int tmp = get();
     //sem_post(&mutex);
     sem_post(&empty);
     printf("Consuming %d from the buff\n", tmp);
 }
+}
     
 void *producer(void *arg)
 {
+    for (int s = 0; s < MAX_BUFFER_SIZE; s++)
+   {
     sem_wait(&empty);
-    sem_wait(&mutex);
+    //sem_wait(&mutex);
     put(counter);
     //sem_post(&mutex);
     sem_post(&full);
     printf("Adding %d to the buffer\n", counter);
     counter++;
-
+}
 }
 
 int main(int argc, char *argv[])
 {
-    pthread_t p1, p2;
+    pthread_t p1, p2, p3;
     int rc;
 
     //initialize semaphore that will garuntee mutal exclusive access to the shared counter
@@ -65,13 +70,13 @@ int main(int argc, char *argv[])
     sem_init(&empty, 0, MAX_BUFFER_SIZE);
 
     printf("main:begin\n");
-    for (int s = 0; s < MAX_BUFFER_SIZE; s++)
-    {
         pthread_create(&p1, NULL, producer, "A");
-        pthread_create(&p2, NULL, consumer, "B");
+        pthread_create(&p2, NULL, producer, "B");
+        pthread_create(&p3, NULL, consumer, "C");
         pthread_join(p1, NULL);
         pthread_join(p2, NULL);
-    }
+        pthread_join(p3, NULL);
+    
     printf("main:end\n");
     printf("Produced Item Total: %d\n", fillIndex);
     printf("Consumed Item Total: %d\n", useIndex);
