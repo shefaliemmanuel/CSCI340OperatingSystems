@@ -65,6 +65,8 @@ int main(int argc, char *argv[])
     sem_init(&empty, 0, MAX_BUFFER_SIZE);
 
     printf("main:begin\n");
+    
+    //I did the for loop inside of main to help me keep track that it was consuming everything it was producing.
     for (int s = 0; s < MAX_BUFFER_SIZE; s++)
     {
         pthread_create(&p1, NULL, producer, "A");
